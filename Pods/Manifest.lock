@@ -1,8 +1,8 @@
 PODS:
-  - HaishinKit (1.0.4):
+  - HaishinKit (1.0.9):
     - Logboard (~> 2.1.2)
   - Logboard (2.1.2)
-  - sdkApiVideo (0.1.0):
+  - sdkApiVideo (0.1.4):
     - HaishinKit (~> 1.0.4)
     - Logboard (~> 2.1.2)
 
@@ -16,10 +16,10 @@ SPEC REPOS:
     - sdkApiVideo
 
 SPEC CHECKSUMS:
-  HaishinKit: b911679d362aac54afd835a154b17b3b6aaa9519
+  HaishinKit: f966243e70f057afbf6b4dde46482d5cf73048ea
   Logboard: e3342fa111e26268bb89577e6a40a0660a423ddd
-  sdkApiVideo: 9d6c159e4f638899bd2ca4ba42f070f24cdf58a2
+  sdkApiVideo: 70d28281f2519952e80fbd768e39ca1e65c4ee74
 
 PODFILE CHECKSUM: e7c7655f705f987a35906d38eb7a5d96de63d66a
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.2
