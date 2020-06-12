@@ -50,8 +50,8 @@ class DetailPlayerViewController: UIViewController {
             }
         }
         playerIdLabel.text = "Player: \(self.player.playerId)"
-        shapeMarginLabel.text = self.player.shapeMargin.description
-        shapeRadiusLabel.text = self.player.shapeRadius.description
+        shapeMarginLabel.text = self.player.shapeMargin?.description
+        shapeRadiusLabel.text = self.player.shapeRadius?.description
         shapeAspectLabel.text = self.player.shapeAspect
         shapeBackgroundTopLabel.text = self.player.shapeBackgroundTop
         shapeBackgroundBottomLabel.text = self.player.shapeBackgroundBottom
@@ -65,11 +65,11 @@ class DetailPlayerViewController: UIViewController {
         backgroundTopLabel.text = self.player.backgroundTop
         backgroundBottomLabel.text = self.player.backgroundBottom
         backgroundTextLabel.text = self.player.backgroundText
-        enableApiLabel.text = self.player.enableApi.description
-        enableControlsLabel.text = self.player.enableControls.description
-        forceAutoplayLabel.text = self.player.forceAutoplay.description
-        hideTitleLabel.text = self.player.hideTitle.description
-        forceLoopLabel.text = self.player.forceLoop.description
+        enableApiLabel.text = self.player.enableApi?.description
+        enableControlsLabel.text = self.player.enableControls?.description
+        forceAutoplayLabel.text = self.player.forceAutoplay?.description
+        hideTitleLabel.text = self.player.hideTitle?.description
+        forceLoopLabel.text = self.player.forceLoop?.description
         logoAssetsLabel.text = self.player.assets?.logo
         linkAssetsLabel.text = self.player.assets?.link
     }

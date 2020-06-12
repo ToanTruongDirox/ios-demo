@@ -45,7 +45,7 @@ class LiveStreamsViewController: UIViewController {
 
     
     @IBAction func createLive(_ sender: Any) {
-        self.liveStreamApi.create(name: "stream de qualité", record: true, playerId: "pt1AqN3FPhLW6JcVfblzQEI2"){ (created, resp) in
+        self.liveStreamApi.create(name: "stream de qualité", record: true, playerId: "pt2CXjrj3CvVtBnWVSYlZeyp"){ (created, resp) in
             if(resp != nil){
                 print("response create live stream: \(String(describing: resp?.statusCode)) -> \(String(describing: resp?.message))")
             }

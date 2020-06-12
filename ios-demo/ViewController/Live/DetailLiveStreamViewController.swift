@@ -30,18 +30,28 @@ class DetailLiveStreamViewController: UIViewController {
         liveStreamApi.getLiveStreamById(liveStreamId: liveStreamId!){(live, resp) in
             if(resp == nil ){
                 self.liveStream = live
-                let url = URL(string: ("\((self.liveStream?.assets.player)!)"))
-                DispatchQueue.main.async {
-                    self.LiveNameLabel.text = self.liveStream?.name
-                    self.LiveIdLabel.text = self.liveStream?.liveStreamId
-                    self.StreamKeyValueLabel.text = self.liveStream?.streamKey
-                    self.ServerUrlValueLabel.text = "rtmp://broadcast.api.video/s"
-                    self.StreamUrlValueLabel.text = "rtmp://broadcast.api.video/s/\((self.liveStream?.streamKey)!)"
-                    self.IsRecordingValueLabel.text = self.liveStream?.record.description
-                    self.liveStreamWebView.load(URLRequest(url: url!))
+                if let playerUrl = self.liveStream?.assets?.hls {
+                    let url = URL(string: playerUrl)
+                    DispatchQueue.main.async {
+                        self.LiveNameLabel.text = self.liveStream?.name
+                        self.LiveIdLabel.text = self.liveStream?.liveStreamId
+                        self.StreamKeyValueLabel.text = self.liveStream?.streamKey
+                        self.ServerUrlValueLabel.text = "rtmp://broadcast.api.video/s"
+                        self.StreamUrlValueLabel.text = "rtmp://broadcast.api.video/s/\((self.liveStream?.streamKey)!)"
+                        self.IsRecordingValueLabel.text = self.liveStream?.record?.description
+                        self.liveStreamWebView.load(URLRequest(url: url!))
+                    }
+                } else {
+                    print("DEBUG: Empty self.liveStream?.assets?.player")
                 }
             }
         }
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Live Now", style: .done, target: self, action: #selector(startLiveStream))
+    }
+    
+    @objc private func startLiveStream() {
+        performSegue(withIdentifier: "liveStreamControlSegue", sender: nil)
     }
     
     // MARK: - Navigation

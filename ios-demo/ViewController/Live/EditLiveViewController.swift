@@ -35,12 +35,12 @@ class EditLiveViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         getAllPlayers(){(completed, resp) in
             if completed{
                 for player in self.players{
-                    self.playersIdPicker.append(player.playerId)
+                    self.playersIdPicker.append(player.playerId!)
                 }
             }
         }
         nameTextField.text = liveStream.name
-        isRecordingSwitch.isOn = liveStream.record
+        isRecordingSwitch.isOn = liveStream.record == true
     }
     
     private func getAllPlayers(completion: @escaping(Bool, Response?)->()){
@@ -74,7 +74,7 @@ class EditLiveViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         if(nameTextField.text != liveStream.name){
             self.newName = nameTextField.text
         }
-        if(isRecordingSwitch.isOn.description != liveStream.record.description){
+        if(isRecordingSwitch.isOn.description != liveStream.record?.description) {
             self.newRecord = isRecordingSwitch.isOn
         }
         if(self.selectedPlayerId != liveStream.playerId){
@@ -83,7 +83,7 @@ class EditLiveViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             }
             self.newPlayerId = self.selectedPlayerId
         }
-        self.liveStreamApi.updateLiveStream(liveId: liveStream.liveStreamId, name: newName, record: newRecord, playerId: newPlayerId){(updated, resp) in
+        self.liveStreamApi.updateLiveStream(liveId: liveStream.liveStreamId!, name: newName, record: newRecord, playerId: newPlayerId){(updated, resp) in
             if updated{
                 DispatchQueue.main.async {
                     self.navigationController?.popViewController(animated: true)

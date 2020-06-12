@@ -52,7 +52,7 @@ class DetailVideoViewController: UIViewController {
             }
         }
         
-        let url = URL(string: ("\(video!.assets.player)"))!
+        let url = URL(string: ("\(video!.assets!.player!)"))!
         playerWebView.load(URLRequest(url: url))
 
         self.videoApi.getStatus(videoId: videoId!){ (stat, resp) in
@@ -71,49 +71,49 @@ class DetailVideoViewController: UIViewController {
                         self.videoChunkTableView.delegate = self
                         self.videoChunkTableView.dataSource = self
                         self.videoChunkTableView.bounces = false
-                        self.heightVideoChunkTableViewConstraint.constant = CGFloat((self.status?.ingest.receivedBytes.count ?? 0) * 100)
-                        self.statusUploadVideoLabel.text = self.status?.ingest.status
-                        self.fileSizeVideoLabel.text = self.status?.ingest.filesize.description
-                        if (self.status?.encodingVideo.playable ?? false == true){
+                        self.heightVideoChunkTableViewConstraint.constant = CGFloat((self.status?.ingest!.receivedBytes!.count ?? 0) * 100)
+                        self.statusUploadVideoLabel.text = self.status?.ingest!.status
+                        self.fileSizeVideoLabel.text = self.status?.ingest!.filesize!.description
+                        if (self.status?.encodingVideo?.playable ?? false == true){
                             self.playableLabel.text = "true"
                         }else{
                             self.playableLabel.text = "false"
                         }
-                        let count = (self.status?.encodingVideo.qualities.count)!
-                        if((self.status?.encodingVideo.qualities.count)! > 0){
+                        let count = (self.status?.encodingVideo?.qualities?.count)!
+                        if((self.status?.encodingVideo?.qualities?.count)! > 0){
                             switch count {
                             case 6:
-                                self.firstEncodingStatusLabel.text = self.status?.encodingVideo.qualities[0].status ?? "null"
-                                self.secondEncodingStatusLabel.text = self.status?.encodingVideo.qualities[1].status ?? "null"
-                                self.thirdEncodingStatusLabel.text = self.status?.encodingVideo.qualities[2].status ?? "null"
-                                self.fourthEncodingStatusLabel.text = self.status?.encodingVideo.qualities[3].status ?? "null"
-                                self.fifthEncodingStatusLabel.text = self.status?.encodingVideo.qualities[4].status ?? "null"
+                                self.firstEncodingStatusLabel.text = self.status?.encodingVideo?.qualities?[0].status ?? "null"
+                                self.secondEncodingStatusLabel.text = self.status?.encodingVideo?.qualities?[1].status ?? "null"
+                                self.thirdEncodingStatusLabel.text = self.status?.encodingVideo?.qualities?[2].status ?? "null"
+                                self.fourthEncodingStatusLabel.text = self.status?.encodingVideo?.qualities?[3].status ?? "null"
+                                self.fifthEncodingStatusLabel.text = self.status?.encodingVideo?.qualities?[4].status ?? "null"
                             case 5:
-                                self.firstEncodingStatusLabel.text = self.status?.encodingVideo.qualities[0].status ?? "null"
-                                self.secondEncodingStatusLabel.text = self.status?.encodingVideo.qualities[1].status ?? "null"
-                                self.thirdEncodingStatusLabel.text = self.status?.encodingVideo.qualities[2].status ?? "null"
-                                self.fourthEncodingStatusLabel.text = self.status?.encodingVideo.qualities[3].status ?? "null"
-                                self.fifthEncodingStatusLabel.text = self.status?.encodingVideo.qualities[4].status ?? "null"
+                                self.firstEncodingStatusLabel.text = self.status?.encodingVideo?.qualities?[0].status ?? "null"
+                                self.secondEncodingStatusLabel.text = self.status?.encodingVideo?.qualities?[1].status ?? "null"
+                                self.thirdEncodingStatusLabel.text = self.status?.encodingVideo?.qualities?[2].status ?? "null"
+                                self.fourthEncodingStatusLabel.text = self.status?.encodingVideo?.qualities?[3].status ?? "null"
+                                self.fifthEncodingStatusLabel.text = self.status?.encodingVideo?.qualities?[4].status ?? "null"
                             case 4:
-                                self.firstEncodingStatusLabel.text = self.status?.encodingVideo.qualities[0].status ?? "null"
-                                self.secondEncodingStatusLabel.text = self.status?.encodingVideo.qualities[1].status ?? "null"
-                                self.thirdEncodingStatusLabel.text = self.status?.encodingVideo.qualities[2].status ?? "null"
-                                self.fourthEncodingStatusLabel.text = self.status?.encodingVideo.qualities[3].status ?? "null"
+                                self.firstEncodingStatusLabel.text = self.status?.encodingVideo?.qualities?[0].status ?? "null"
+                                self.secondEncodingStatusLabel.text = self.status?.encodingVideo?.qualities?[1].status ?? "null"
+                                self.thirdEncodingStatusLabel.text = self.status?.encodingVideo?.qualities?[2].status ?? "null"
+                                self.fourthEncodingStatusLabel.text = self.status?.encodingVideo?.qualities?[3].status ?? "null"
                                 self.fifthEncodingStatusLabel.text = "null"
                             case 3:
-                                self.firstEncodingStatusLabel.text = self.status?.encodingVideo.qualities[0].status ?? "null"
-                                self.secondEncodingStatusLabel.text = self.status?.encodingVideo.qualities[1].status ?? "null"
-                                self.thirdEncodingStatusLabel.text = self.status?.encodingVideo.qualities[2].status ?? "null"
+                                self.firstEncodingStatusLabel.text = self.status?.encodingVideo?.qualities?[0].status ?? "null"
+                                self.secondEncodingStatusLabel.text = self.status?.encodingVideo?.qualities?[1].status ?? "null"
+                                self.thirdEncodingStatusLabel.text = self.status?.encodingVideo?.qualities?[2].status ?? "null"
                                 self.fourthEncodingStatusLabel.text = "null"
                                 self.fifthEncodingStatusLabel.text = "null"
                             case 2:
-                                self.firstEncodingStatusLabel.text = self.status?.encodingVideo.qualities[0].status ?? "null"
-                                self.secondEncodingStatusLabel.text = self.status?.encodingVideo.qualities[1].status ?? "null"
+                                self.firstEncodingStatusLabel.text = self.status?.encodingVideo?.qualities?[0].status ?? "null"
+                                self.secondEncodingStatusLabel.text = self.status?.encodingVideo?.qualities?[1].status ?? "null"
                                 self.thirdEncodingStatusLabel.text = "null"
                                 self.fourthEncodingStatusLabel.text = "null"
                                 self.fifthEncodingStatusLabel.text = "null"
                             case 1:
-                                self.firstEncodingStatusLabel.text = self.status?.encodingVideo.qualities[0].status ?? "null"
+                                self.firstEncodingStatusLabel.text = self.status?.encodingVideo?.qualities?[0].status ?? "null"
                                 self.secondEncodingStatusLabel.text = "null"
                                 self.thirdEncodingStatusLabel.text = "null"
                                 self.fourthEncodingStatusLabel.text = "null"
@@ -132,18 +132,18 @@ class DetailVideoViewController: UIViewController {
                             self.fourthEncodingStatusLabel.text = "null"
                             self.fifthEncodingStatusLabel.text = "null"
                         }
-                        self.widthVideoLabel.text = self.status?.encodingVideo.metaData.width?.description ?? "null"
-                        self.heightVideoLabel.text = self.status?.encodingVideo.metaData.height?.description ?? "null"
-                        self.bitrateVideoLabel.text = self.status?.encodingVideo.metaData.bitrate?.description ?? "null"
-                        self.durationVideoLabel.text = self.status?.encodingVideo.metaData.duration?.description ?? "null"
-                        self.framerateVideoLabel.text = self.status?.encodingVideo.metaData.framerate?.description ?? "null"
-                        self.samplerateVideoLabel.text = self.status?.encodingVideo.metaData.samplerate?.description ?? "null"
-                        self.videoCodecLabel.text = self.status?.encodingVideo.metaData.videoCodec ?? "null"
-                        self.audioCodecLabel.text = self.status?.encodingVideo.metaData.audioCodec ?? "null"
-                        if(self.status?.encodingVideo.metaData.aspectRatio == nil){
+                        self.widthVideoLabel.text = self.status?.encodingVideo?.metaData?.width?.description ?? "null"
+                        self.heightVideoLabel.text = self.status?.encodingVideo?.metaData?.height?.description ?? "null"
+                        self.bitrateVideoLabel.text = self.status?.encodingVideo?.metaData?.bitrate?.description ?? "null"
+                        self.durationVideoLabel.text = self.status?.encodingVideo?.metaData?.duration?.description ?? "null"
+                        self.framerateVideoLabel.text = self.status?.encodingVideo?.metaData?.framerate?.description ?? "null"
+                        self.samplerateVideoLabel.text = self.status?.encodingVideo?.metaData?.samplerate?.description ?? "null"
+                        self.videoCodecLabel.text = self.status?.encodingVideo?.metaData?.videoCodec ?? "null"
+                        self.audioCodecLabel.text = self.status?.encodingVideo?.metaData?.audioCodec ?? "null"
+                        if(self.status?.encodingVideo?.metaData?.aspectRatio == nil){
                             self.aspectRatioVideoLabel.text = "null"
                         }else{
-                            self.aspectRatioVideoLabel.text = self.status?.encodingVideo.metaData.aspectRatio
+                            self.aspectRatioVideoLabel.text = self.status?.encodingVideo?.metaData?.aspectRatio
                         }
                     }
                 }
@@ -180,12 +180,12 @@ class DetailVideoViewController: UIViewController {
 
 extension DetailVideoViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.status?.ingest.receivedBytes.count ?? 0
+        self.status?.ingest?.receivedBytes?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "VideoChunkCell") as? VideoChunkTableViewCell else { fatalError("wrong cell type")}
-        let currentChunk = (self.status?.ingest.receivedBytes[indexPath.row])!
+        let currentChunk = (self.status?.ingest?.receivedBytes?[indexPath.row])!
         cell.configure(receivedBytes: currentChunk, nb: (indexPath.row + 1).description)
         
         return cell

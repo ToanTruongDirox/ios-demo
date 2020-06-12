@@ -91,107 +91,107 @@ class EditPlayerViewController: UIViewController, UIImagePickerControllerDelegat
             SelectLogoView.isHidden = true
         }
         
-        ShapeMarginTextField.text = self.player.shapeMargin.description
-        ShapeRadiusTextField.text = self.player.shapeRadius.description
+        ShapeMarginTextField.text = self.player.shapeMargin?.description
+        ShapeRadiusTextField.text = self.player.shapeRadius?.description
         ShapeAspectTextField.text = self.player.shapeAspect
         
-        let rgbaShapeBackgroundTop = getRGBA(text: self.player.shapeBackgroundTop)
+        let rgbaShapeBackgroundTop = getRGBA(text: self.player.shapeBackgroundTop!)
         RedShapeBackgroundTopTextField.text = rgbaShapeBackgroundTop.red
         GreenShapeBackgroundTopTextField.text = rgbaShapeBackgroundTop.green
         BlueShapeBackgroundTopTextField.text = rgbaShapeBackgroundTop.blue
         AlphaShapeBackgroundTopTextField.text = rgbaShapeBackgroundTop.alpha
         
-        let rgbaShapeBackgroundBottom = getRGBA(text: self.player.shapeBackgroundBottom)
+        let rgbaShapeBackgroundBottom = getRGBA(text: self.player.shapeBackgroundBottom!)
         RedShapeBackgroundBottomTextField.text = rgbaShapeBackgroundBottom.red
         GreenShapeBackgroundBottomTextField.text = rgbaShapeBackgroundBottom.green
         BlueShapeBackgroundBottomTextField.text = rgbaShapeBackgroundBottom.blue
         AlphaShapeBackgroundBottomTextField.text = rgbaShapeBackgroundBottom.alpha
         
-        let rgbaText = getRGBA(text: self.player.text)
+        let rgbaText = getRGBA(text: self.player.text!)
         RedTextTextField.text = rgbaText.red
         GreenTextTextField.text = rgbaText.green
         BlueTextTextField.text = rgbaText.blue
         AlphaTextTextField.text = rgbaText.alpha
         
-        let rgbaLink = getRGBA(text: self.player.link)
+        let rgbaLink = getRGBA(text: self.player.link!)
         RedLinkTextField.text = rgbaLink.red
         GreenLinkTextField.text = rgbaLink.green
         BlueLinkTextField.text = rgbaLink.blue
         AlphaLinkTextField.text = rgbaLink.alpha
         
-        let rgbaLinkHover = getRGBA(text: self.player.linkHover)
+        let rgbaLinkHover = getRGBA(text: self.player.linkHover!)
         RedLinkHoverTextField.text = rgbaLinkHover.red
         GreenLinkHoverTextField.text = rgbaLinkHover.green
         BlueLinkHoverTextField.text = rgbaLinkHover.blue
         AlphaLinkHoverTextField.text = rgbaLinkHover.alpha
         
-        let rgbaLinkActive = getRGBA(text: self.player.linkActive)
+        let rgbaLinkActive = getRGBA(text: self.player.linkActive!)
         RedLinkActiveTextField.text = rgbaLinkActive.red
         GreenLinkActiveTextField.text = rgbaLinkActive.green
         BlueLinkActiveTextField.text = rgbaLinkActive.blue
         AlphaLinkActiveTextField.text = rgbaLinkActive.alpha
         
-        let rgbaTrackPlayed = getRGBA(text: self.player.trackPlayed)
+        let rgbaTrackPlayed = getRGBA(text: self.player.trackPlayed!)
         RedTrackPlayedTextField.text = rgbaTrackPlayed.red
         GreenTrackPlayedTextField.text = rgbaTrackPlayed.green
         BlueTrackPlayedTextField.text = rgbaTrackPlayed.blue
         AlphaTrackPlayedTextField.text = rgbaTrackPlayed.alpha
         
-        let rgbaTrackUnplayed = getRGBA(text: self.player.trackUnplayed)
+        let rgbaTrackUnplayed = getRGBA(text: self.player.trackUnplayed!)
         RedTrackUnplayedTextField.text = rgbaTrackUnplayed.red
         GreenTrackUnplayedTextField.text = rgbaTrackUnplayed.green
         BlueTrackUnplayedTextField.text = rgbaTrackUnplayed.blue
         AlphaTrackUnplayedTextField.text = rgbaTrackUnplayed.alpha
         
-        let rgbaTrackBackground = getRGBA(text: self.player.trackBackground)
+        let rgbaTrackBackground = getRGBA(text: self.player.trackBackground!)
         RedTrackBackgroundTextField.text = rgbaTrackBackground.red
         GreenTrackBackgroundTextField.text = rgbaTrackBackground.green
         BlueTrackBackgroundTextField.text = rgbaTrackBackground.blue
         AlphaTrackBackgroundTextField.text = rgbaTrackBackground.alpha
         
-        let rgbaBackgroundTop = getRGBA(text: self.player.backgroundTop)
+        let rgbaBackgroundTop = getRGBA(text: self.player.backgroundTop!)
         RedBackgroundTopTextField.text = rgbaBackgroundTop.red
         GreenBackgroundTopTextField.text = rgbaBackgroundTop.green
         BlueBackgroundTopTextField.text = rgbaBackgroundTop.blue
         AlphaBackgroundTopTextField.text = rgbaBackgroundTop.alpha
         
-        let rgbaBackgroundBottom = getRGBA(text: self.player.backgroundBottom)
+        let rgbaBackgroundBottom = getRGBA(text: self.player.backgroundBottom!)
         RedBackgroundBottomTextField.text = rgbaBackgroundBottom.red
         GreenBackgroundBottomTextField.text = rgbaBackgroundBottom.green
         BlueBackgroundBottomTextField.text = rgbaBackgroundBottom.blue
         AlphaBackgroundBottomTextField.text = rgbaBackgroundBottom.alpha
         
-        let rgbaBackgroundText = getRGBA(text: self.player.backgroundText)
+        let rgbaBackgroundText = getRGBA(text: self.player.backgroundText!)
         RedBackgroundTextTextField.text = rgbaBackgroundText.red
         GreenBackgroundTextTextField.text = rgbaBackgroundText.green
         BlueBackgroundTextTextField.text = rgbaBackgroundText.blue
         AlphaBackgroundTextTextField.text = rgbaBackgroundText.alpha
         
-        if self.player.enableApi{
+        if self.player.enableApi == true {
             EnableApiSwitch.setOn(true, animated: false)
         }else{
             EnableApiSwitch.setOn(false, animated: false)
         }
         
-        if self.player.enableControls{
+        if self.player.enableControls == true {
             EnableControlsSwitch.setOn(true, animated: false)
         }else{
             EnableControlsSwitch.setOn(false, animated: false)
         }
         
-        if self.player.forceAutoplay{
+        if self.player.forceAutoplay == true {
             ForceAutoPlaySwitch.setOn(true, animated: false)
         }else{
             ForceAutoPlaySwitch.setOn(false, animated: false)
         }
         
-        if self.player.hideTitle{
+        if self.player.hideTitle == true {
             HideTitleSwitch.setOn(true, animated: false)
         }else{
             HideTitleSwitch.setOn(false, animated: false)
         }
         
-        if self.player.forceLoop{
+        if self.player.forceLoop == true {
             ForceLoopSwitch.setOn(true, animated: false)
         }else{
             ForceLoopSwitch.setOn(false, animated: false)
@@ -299,7 +299,7 @@ class EditPlayerViewController: UIViewController, UIImagePickerControllerDelegat
             }
         }
         if EnableLogoSwitch.isOn{
-            self.playerApi.uploadLogo(playerId: player.playerId, url: self.url, filePath: self.filePath, fileName: self.fileName, imageData: imageData){ (uploaded, resp) in
+            self.playerApi.uploadLogo(playerId: player.playerId!, url: self.url, filePath: self.filePath, fileName: self.fileName, imageData: imageData){ (uploaded, resp) in
                 if(resp != nil){
                     print("error : \(String(describing: resp?.statusCode)) -> \(String(describing: resp?.message))")
                 }else{

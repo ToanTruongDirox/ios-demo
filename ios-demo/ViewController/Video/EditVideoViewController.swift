@@ -93,6 +93,12 @@ class EditVideoViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     @IBAction func updateVideo(_ sender: Any) {
+        
+        guard let videoId = videoUpdated!.videoId else {
+            print("DEBUG: videoUpdated!.videoId == null")
+            return
+        }
+        
         videoUpdated?.title = titleTextField.text!
         videoUpdated?.description = descriptionTextField.text!
         videoApi.updateVideo(video: videoUpdated!){(updated, resp) in
@@ -103,7 +109,7 @@ class EditVideoViewController: UIViewController, UIImagePickerControllerDelegate
         if thumbnailSwitch.isOn{
             switch thumbnailSegmentedControl.selectedSegmentIndex {
             case 0:
-                self.videoApi.pickThumbnail(videoId: videoUpdated!.videoId, timecode: timeCodeTextField.text!){(updated, resp) in
+                self.videoApi.pickThumbnail(videoId: videoId, timecode: timeCodeTextField.text!){(updated, resp) in
                     if updated{
                         print("the thumbnail has been correctly changed, but the change will be effective in maximum 1h")
                         DispatchQueue.main.async {
@@ -118,7 +124,7 @@ class EditVideoViewController: UIViewController, UIImagePickerControllerDelegate
                 }
             case 1:
                 let imageData:Data = self.image.pngData()!
-                self.videoApi.uploadImageThumbnail(videoId: videoUpdated!.videoId, url: self.url, filePath: self.filePath, fileName: self.fileName, imageData: imageData){(updated, resp) in
+                self.videoApi.uploadImageThumbnail(videoId: videoId, url: self.url, filePath: self.filePath, fileName: self.fileName, imageData: imageData){(updated, resp) in
                     if updated{
                         print("image has been correctly added of thumbnail")
                         DispatchQueue.main.async {

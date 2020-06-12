@@ -44,7 +44,7 @@ class VideosTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         cell.textLabel?.text = "\(videos[indexPath.row].title)"
-        cell.detailTextLabel?.text = "\(videos[indexPath.row].sourceVideo.uri)"
+        cell.detailTextLabel?.text = "\(videos[indexPath.row].sourceVideo?.uri)"
 
         return cell
     }
@@ -64,7 +64,7 @@ class VideosTableViewController: UITableViewController {
         var isDeleted = false
         if editingStyle == .delete {
             // Delete the row from the data source
-            self.videoApi.deleteVideo(videoId: self.videos[indexPath.row].videoId){ (deleted, resp) in
+            self.videoApi.deleteVideo(videoId: self.videos[indexPath.row].videoId ?? ""){ (deleted, resp) in
                 isDeleted = deleted
             }
             if isDeleted{

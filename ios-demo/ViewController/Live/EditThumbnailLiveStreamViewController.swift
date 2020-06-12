@@ -52,8 +52,14 @@ class EditThumbnailLiveStreamViewController: UIViewController, UIImagePickerCont
     }
     
     @IBAction func uploadThumbnail(_ sender: Any) {
+        
+        guard let liveStreamId = liveStream.liveStreamId else {
+            print("DEBUG: liveStream.liveStreamId == null")
+            return
+        }
+        
         let imageData: Data = self.image.pngData()!
-        self.liveStreamApi.uploadImageThumbnail(liveStreamId: self.liveStream.liveStreamId, url: self.url, filePath: self.filePath, fileName: self.fileName, imageData: imageData){(uploaded, resp)in
+        self.liveStreamApi.uploadImageThumbnail(liveStreamId: liveStreamId, url: self.url, filePath: self.filePath, fileName: self.fileName, imageData: imageData){(uploaded, resp)in
             if uploaded{
                 DispatchQueue.main.async {
                     self.navigationController?.popViewController(animated: true)
